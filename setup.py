@@ -20,6 +20,6 @@ setup(
 		"Operating System :: OS Independent",
 	), 
 	keywords ='Pillow addon, pillow lib, discord image lib, discord image commands, discord image manipulation', 
-	install_requires = ['Pillow==8.0.2',],
+	install_requires = ['Pillow>=8.0.1', "aiohttp>=3.6.2,<4.0.0"],
 	zip_safe = False
 ) 
