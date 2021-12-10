@@ -27,12 +27,14 @@ class Generator:
         pass
 
     async def lovers(self, boy: str, girl: str) -> BytesIO:
-        """
-        Generate a lovers card
+        """Generate lovers image
 
-        Parameters
-            boy     Link of boy's image
-            girl    Link of girl's image
+        Args:
+            boy (str): boy image link
+            girl (str): girl image link
+
+        Returns:
+            BytesIO: The image bytes
         """
 
         args = {
@@ -46,11 +48,13 @@ class Generator:
         return image
 
     async def frame(self, profile: str) -> BytesIO:
-        """
-        Photo in a frame
+        """Generate frame image
 
-        Parameters
-            profile     Profile pic image
+        Args:
+            profile (str): Profile image link
+
+        Returns:
+            BytesIO: The image bytes
         """
 
         args = {"image_bytes": await get_image(profile), "bg_path": frame_bg}
@@ -61,11 +65,13 @@ class Generator:
         return image
 
     async def stars(self, profile: str) -> BytesIO:
-        """
-        Star filtered photo
+        """Generate stars image
 
-        Parameters
-            profile     Profile pic image
+        Args:
+            profile (str): Profile image link
+
+        Returns:
+            BytesIO: The image bytes
         """
         args = {
             "image_bytes": await get_image(profile),
@@ -77,11 +83,13 @@ class Generator:
         return image
 
     async def colors(self, profile: str) -> BytesIO:
-        """
-        Star filtered photo
+        """Get colors from image
 
-        Parameters
-            profile     Profile pic image
+        Args:
+            profile (str): Profile image link
+
+        Returns:
+            BytesIO: The image bytes
         """
         args = {"image_bytes": await get_image(profile), "font_path": font}
         func = functools.partial(generate_colors, **args)
@@ -90,13 +98,14 @@ class Generator:
         return image
 
     async def envelop(self, profile: str) -> BytesIO:
-        """
-        Photo in a envelop
+        """Generate envelop image
 
-        Parameters
-            profile     Profile pic image
-        """
+        Args:
+            profile (str): Profile image link
 
+        Returns:
+            BytesIO:  The image bytes
+        """
         args = {"image_bytes": await get_image(profile), "cover_path": envelop_}
         func = functools.partial(generate_envelop, **args)
         image = await asyncio.get_event_loop().run_in_executor(None, func)
@@ -104,12 +113,14 @@ class Generator:
         return image
 
     async def knockout(self, profile1, profile2) -> BytesIO:
-        """
-        Generate a knockout image
+        """Generate knockout image
 
-        Parameters
-            profile1    Profile picture image link of first person
-            profile2    Profile picture image link of second person
+        Args:
+            profile1 (str): Profile image 1 link
+            profile2 (str): Profile image 2 link
+
+        Returns:
+            BytesIO: The image bytes
         """
 
         args = {
@@ -124,11 +135,13 @@ class Generator:
         return image
 
     async def fart(self, profile) -> BytesIO:
-        """
-        Farting image
+        """Farting image
 
-        Parameters
-            profile     Profile pic image
+        Args:
+            profile (str): Profile image link
+
+        Returns:
+            BytesIO: The image bytes
         """
         args = {
             "profile": await get_image(profile),

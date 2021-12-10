@@ -7,6 +7,14 @@ lovers_bg = os.path.join(os.path.dirname(__file__), "assets", "love.png")
 
 
 def get_bytes(final_image):
+    """Get bytes of an image
+
+    Args:
+        final_image (Image.Image): Image to get bytes from
+
+    Returns:
+        BytesIO: The bytes of the image
+    """
     final_bytes = BytesIO()
     final_image.save(final_bytes, "png")
     final_bytes.seek(0)
@@ -15,6 +23,16 @@ def get_bytes(final_image):
 
 
 def generate_lovers(boy_image_bytes, girl_image_bytes, bg_path):
+    """Generate lovers image
+
+    Args:
+        boy_image_bytes (BytesIO): Images bytes of first image
+        girl_image_bytes (BytesIO): Image bytes of second image
+        bg_path (str): Path string for background image
+
+    Returns:
+        BytesIO: The bytes of image
+    """
     background = Image.open(bg_path).convert("RGBA")
 
     boy_image = (
@@ -43,6 +61,15 @@ def generate_lovers(boy_image_bytes, girl_image_bytes, bg_path):
 
 
 def generate_frame(image_bytes, bg_path):
+    """Generate frame image
+
+    Args:
+        image_bytes (BytesIO): Image bytes
+        bg_path (str): Path string for background image
+
+    Returns:
+        BytesIO: The bytes of image
+    """
     holder = Image.open(bg_path).convert("RGBA")
 
     profile = Image.open(image_bytes).convert("RGBA").resize((130, 130))
@@ -62,6 +89,15 @@ def generate_frame(image_bytes, bg_path):
 
 
 def generate_stars(image_bytes, filter_path):
+    """Generate stars image
+
+    Args:
+        image_bytes (BytesIO): Image bytes
+        filter_path (str): Filter path
+
+    Returns:
+        BytesIO: The bytes of image
+    """
     profile = Image.open(image_bytes).convert("RGBA")
     filter_ = Image.open(filter_path).convert("RGBA").resize(profile.size)
 
@@ -73,6 +109,15 @@ def generate_stars(image_bytes, filter_path):
 
 
 def generate_colors(image_bytes, font_path):
+    """Generate colors image
+
+    Args:
+        image_bytes (BytesIO): Image bytes
+        font_path (str): Font path
+
+    Returns:
+        BytesIO: The bytes of image
+    """
     image_ct = ColorThief(image_bytes)
     image_pil = Image.open(image_bytes).resize((500, 500)).convert("RGBA")
 
@@ -100,6 +145,15 @@ def generate_colors(image_bytes, font_path):
 
 
 def generate_envelop(image_bytes, cover_path):
+    """Generate envelope image
+    
+    Args:
+        image_bytes (BytesIO): Image bytes
+        cover_path (str): Cover path
+        
+    Returns:
+        BytesIO: The bytes of image
+    """
     profile = Image.open(image_bytes).convert("RGBA").resize((278, 278)).rotate(11, expand=True)
     frame = Image.open(cover_path).convert("RGBA")  # 750x606
 
@@ -114,6 +168,16 @@ def generate_envelop(image_bytes, cover_path):
 
 
 def generate_ko(profile1, profile2, bg_path):
+    """Generate ko image
+    
+    Args:
+        profile1 (BytesIO): Profile 1 bytes
+        profile2 (BytesIO): Profile 2 bytes
+        bg_path (str): Background path
+    
+    Returns:
+        BytesIO: The bytes of image
+    """
     background = Image.open(bg_path).convert("RGBA")
 
     holder = Image.new("RGBA", size=background.size, color=(255, 255, 255, 0))
@@ -135,6 +199,15 @@ def generate_ko(profile1, profile2, bg_path):
 
 
 def generate_fart(profile, bg_path):
+    """Generate fart image
+
+    Args:
+        profile (BytesIO): Profile bytes
+        bg_path (str): Background path
+    
+    Returns:
+        BytesIO: The bytes of image
+    """
     background = Image.open(bg_path).convert("RGBA")
 
     holder = Image.new("RGBA", size=background.size, color=(255, 255, 255, 0))
