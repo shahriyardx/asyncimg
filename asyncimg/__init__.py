@@ -1,9 +1,9 @@
 import os
 import asyncio
 import functools
-from asyncimg._util import get_image
+from asyncimg.util import get_image
 from io import BytesIO
-from asyncimg._generator import (
+from asyncimg.generator import (
     generate_lovers,
     generate_frame,
     generate_stars,
